@@ -6,30 +6,14 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-@Service
-@AllArgsConstructor
-public class UserService {
+public interface UserService {
 
-    private final UserRepository userRepository;
 
-    public UserEntity findById(Long id) {
-        return userRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("User not found"));
-    }
+    public UserEntity findById(Long id);
 
-    public UserEntity save(UserEntity user) {
-        return userRepository.save(user);
-    }
+    public UserEntity save(UserEntity user);
 
-    public UserEntity update(Long id, UserEntity user) {
-        UserEntity existing = findById(id);
-        existing.setUsername(user.getUsername());
-        existing.setPassword(user.getPassword());
-        existing.setProfilePicturePath(user.getProfilePicturePath());
-        return userRepository.save(existing);
-    }
+    public UserEntity update(Long id, UserEntity user);
 
-    public void deleteById(Long id) {
-        userRepository.deleteById(id);
-    }
+    public void deleteById(Long id);
 }
