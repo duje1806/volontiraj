@@ -2,7 +2,6 @@ package hr.tvz.volontiraj.controller;
 
 import hr.tvz.volontiraj.dto.EventDto;
 import hr.tvz.volontiraj.filterParams.EventFilterParams;
-import hr.tvz.volontiraj.mapper.EventMapper;
 import hr.tvz.volontiraj.model.Event;
 import hr.tvz.volontiraj.service.EventService;
 import jakarta.persistence.EntityNotFoundException;
@@ -65,6 +64,15 @@ public class EventController {
             eventService.findById(id);
             eventService.deleteById(id);
             return ResponseEntity.noContent().build();
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<Event> updateEvent(@PathVariable Long id, @RequestBody EventDto eventDto) {
+        try {
+            Event updatedEvent = eventService.update(id, eventDto);
+            return ResponseEntity.ok(updatedEvent);
         } catch (EntityNotFoundException e) {
             return ResponseEntity.notFound().build();
         }

@@ -37,14 +37,14 @@ public class EventMapper {
         event.setStartDateTime(eventDto.getStartDateTime());
         event.setUpvote(eventDto.getUpvote());
 
-        // ovo je samo placeholder, treba u service napravit lookup, iako TO SVE bi se svakako trebalo overrideati s obzirom da ce krator biti ulogirani korisnik
+
         if (eventDto.getCreatorId() != null) {
             UserEntity creator = new UserEntity();
             creator.setId(eventDto.getCreatorId());
             event.setCreator(creator);
         }
 
-        //ovo treba biti lookup u servisu iako to se nece tako ni spremati tako da je ovo vjv dovoljno
+
         event.setVolunteers(new HashSet<>());
 
         return event;
