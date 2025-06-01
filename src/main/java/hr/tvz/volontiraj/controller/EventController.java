@@ -68,15 +68,15 @@ public class EventController {
             return ResponseEntity.notFound().build();
         }
     }
-    @PutMapping("/{id}")
-    public ResponseEntity<Event> updateEvent(@PathVariable Long id, @RequestBody EventDto eventDto) {
-        try {
-            Event updatedEvent = eventService.update(id, eventDto);
-            return ResponseEntity.ok(updatedEvent);
-        } catch (EntityNotFoundException e) {
-            return ResponseEntity.notFound().build();
-        }
-    }
+//    @PutMapping("/{id}")
+//    public ResponseEntity<Event> updateEvent(@PathVariable Long id, @RequestBody EventDto eventDto) {
+//        try {
+//            Event updatedEvent = eventService.update(id, eventDto);
+//            return ResponseEntity.ok(updatedEvent);
+//        } catch (EntityNotFoundException e) {
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
 
 
 }

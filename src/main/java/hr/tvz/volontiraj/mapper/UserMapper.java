@@ -1,13 +1,8 @@
 package hr.tvz.volontiraj.mapper;
 
 
-import hr.tvz.volontiraj.dto.EventDto;
 import hr.tvz.volontiraj.dto.UserDto;
-import hr.tvz.volontiraj.model.Event;
-import hr.tvz.volontiraj.model.EventCategory;
 import hr.tvz.volontiraj.model.UserEntity;
-
-import java.util.HashSet;
 
 public class UserMapper {
     public static UserDto mapUserToUserDto(UserEntity user) {

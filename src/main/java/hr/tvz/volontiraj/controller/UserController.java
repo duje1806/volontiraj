@@ -1,5 +1,6 @@
 package hr.tvz.volontiraj.controller;
 
+import hr.tvz.volontiraj.dto.UserDto;
 import hr.tvz.volontiraj.model.UserEntity;
 import hr.tvz.volontiraj.service.UserService;
 import jakarta.persistence.EntityNotFoundException;
@@ -17,7 +18,7 @@ public class UserController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserEntity> getUserById(@PathVariable Long id) {
+    public ResponseEntity<UserDto> getUserById(@PathVariable Long id) {
         try {
             return ResponseEntity.ok(userService.findById(id));
         } catch (EntityNotFoundException e) {
@@ -27,13 +28,13 @@ public class UserController {
 
 
     @PostMapping
-    public ResponseEntity<UserEntity> createUser(@RequestBody UserEntity user) {
+    public ResponseEntity<UserDto> createUser(@RequestBody UserEntity user) {
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
     }
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserEntity> updateUser(@PathVariable Long id, @RequestBody UserEntity user) {
+    public ResponseEntity<UserDto> updateUser(@PathVariable Long id, @RequestBody UserEntity user) {
         try {
             return ResponseEntity.ok(userService.update(id, user));
         } catch (EntityNotFoundException e) {
